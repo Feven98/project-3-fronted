@@ -5,10 +5,10 @@ const User = (props) => {
     const [user, setUser] = useState([])
 // state to hold formData
 const [newForm, setNewForm] = useState({
-    name: "",
+    username: "",
     image: "",
-    title: "",
-});
+    liketotal: "",
+})
 
     const BASE_URL = "https://fev-sol-project3.herokuapp.com/user"
     const getUser = async () => {
@@ -25,6 +25,100 @@ const [newForm, setNewForm] = useState({
         }
     }
 
+   // handleChange function for form
+   const handleChange = (e) => {
+    console.log(newForm)
+    const userInput = { ...newForm }
+    console.log(e.target.username)
+    userInput[e.target.username] = e.target.value
+    setNewForm(userInput);
+};
+
+const handleSubmit =async(e) => {
+    const currentUser = {...newForm}
+    try{
+        const requestOptions = {
+            method: "Post",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(currentUser)
+        }
+const response = await fetch(BASE_URL, requestOptions)
+
+const createPerson = await response.json()
+setUser([...user, createPerson])
+setNewForm({
+    username: "",
+    image: "",
+    liketotal: "",
+})
+    }catch(err){
+        console.log(err)
+    }
+}
+
+
+
+    const loaded = () => {
+        return (<>
+            <section className="people-list">
+            <h2>Create Post</h2>
+    <form onSubmit={handleSubmit}>
+        <label htmlFor='username'>
+            Username
+    <input
+          type="text"
+            value={newForm.username}
+            username="name"
+            placeholder="name"
+            onChange={handleChange}
+        />
+        </label>
+        <div>
+        <label htmlFor='image'>
+            Image
+    <input
+          type="pic"
+            value={newForm.image}
+            image="image"
+            placeholder="image"
+            onChange={handleChange}
+        />
+        </label>
+        </div>
+        <div>
+        <label htmlFor='username'>
+            Like-Total
+    <input
+          type="like"
+            value={newForm.liketotal}
+            liketotal="like"
+            placeholder="like"
+            onChange={handleChange}
+        />
+        </label>
+        <br/>
+        <input type="Submit" value="Create Post"/>
+        </div>
+        </form>
+        </section>
+        <section className="user-list">
+            {user?.map((user) => {
+      return (
+        <div key={user._id}>
+          <h1>{user.username}</h1>
+          <img src={user.image} />
+          <h3>{user.liketotal}</h3>
+        </div>
+           
+            );
+    })
+  }
+   </section>
+                </>
+                )
+}
 
 useEffect(() => {
 getUser()
@@ -45,17 +139,17 @@ getUser()
 //         </Link>
 //     </div>
 // )
-const loaded = () => {
-    return user?.map((user) => {
-      return (
-        <div key={user._id}>
-          <h1>{user.username}</h1>
-          <img src={user.image} />
-          <h3>{user.liketotal}</h3>
-        </div>
-      );
-    });
-  };
+// const loaded = () => {
+//     return user?.map((user) => {
+//       return (
+//         <div key={user._id}>
+//           <h1>{user.username}</h1>
+//           <img src={user.image} />
+//           <h3>{user.liketotal}</h3>
+//         </div>
+//       );
+//     });
+//   };
 
   const loading = () => (
     <section className="user-list">
