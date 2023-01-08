@@ -1,17 +1,17 @@
 import { Routes, Route } from "react-router-dom"
-import HomePage from './allcomponent/Home';
 import ProfilePage from './allcomponent/Profile'; 
 // import SignUp from './components/SignUp';
 import { Search } from './allcomponent/Search';
+import User from '../pages/User';
 
 const Main = () => {
   return (
     <main>
       <Routes>
-      <Route path='/' element={<HomePage />} />
-        <Route path='/user' element={ <ProfilePage /> } />
+      <Route path='/' element={<User />} />
+        <Route path='/profile/:id' element={ <ProfilePage /> } />
         {/* <Route path='/testing' element={<SignUp />} /> */}
-        <Route path='/user/:id' element={<Search />} />
+        <Route path='/search/:id' element={<Search />} />
       </Routes>
     </main>
   )
