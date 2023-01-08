@@ -42,9 +42,9 @@ const loaded = () => {
     return user?.map((user) => {
       return (
         <div key={user._id}>
-          <h1>{user.name}</h1>
+          <h1>{user.username}</h1>
           <img src={user.image} />
-          <h3>{user.title}</h3>
+          <h3>{user.liketotal}</h3>
         </div>
       );
     });
