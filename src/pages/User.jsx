@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom'
 import './User.css'
 const User = (props) => {
     const [user, setUser] = useState([])
+// state to hold formData
+const [newForm, setNewForm] = useState({
+    name: "",
+    image: "",
+    title: "",
+});
+
     const BASE_URL = "https://fev-sol-project3.herokuapp.com/user"
     const getUser = async () => {
         try {
