@@ -31,7 +31,7 @@ const [newForm, setNewForm] = useState({
     const userInput = { ...newForm }
     // console.log(e.target.username)
     userInput[e.target.name] = e.target.value
-    setNewForm(e.target.value);
+    setNewForm(userInput);
 };
 
 const handleSubmit =async(e) => {
@@ -39,7 +39,7 @@ const handleSubmit =async(e) => {
     const currentUser = {...newForm}
     try{
         const requestOptions = {
-            method: "POST",
+            method: "Post",
             headers:{
                 "Content-Type" : "application/json"
             },
@@ -70,8 +70,8 @@ setNewForm({
             Username
     <input
           type="text"
-            value={newForm.name}
-            username="name"
+            value={newForm.username}
+            name="username"
             placeholder="name"
             onChange={handleChange}
         />
@@ -82,7 +82,7 @@ setNewForm({
     <input
           type="pic"
             value={newForm.image}
-            image="image"
+            name="image"
             placeholder="image"
             onChange={handleChange}
         />
@@ -94,13 +94,13 @@ setNewForm({
     <input
           type="like"
             value={newForm.liketotal}
-            liketotal="like"
+            name="liketotal"
             placeholder="like"
             onChange={handleChange}
         />
         </label>
         <br/>
-        <input type="Submit" value="Create Post"/>
+        <input type="Submit" value="Create Post" onChange={handleChange}/>
         </div>
         </form>
         </section>
@@ -121,27 +121,53 @@ setNewForm({
                 )
 }
 
-const loading = () => (
-  <section className="user-list">
-    <h1>
-      Loading...
-      <span>
-        <img
-          className="picture"
-          src="https://freesvg.org/img/1544764567.png"
-        />{" "}
-      </span>
-    </h1>
-  </section>
-);
-
 useEffect(() => {
 getUser()
 },[])
+// return (
+//     <div>
+//         <Link to={`/profile`}>
+//             <div>
+//                 <h1>PROFILE TESTING</h1>
+//             </div>
+//         </Link>
+//         <Link to={`/user`}>
+//             FORM TEST PAGE
+//         </Link>
+//         <br></br>
+//         <Link to={`/post`}>
+//             FORM TEST PAGE 2
+//         </Link>
+//     </div>
+// )
+// const loaded = () => {
+//     return user?.map((user) => {
+//       return (
+//         <div key={user._id}>
+//           <h1>{user.username}</h1>
+//           <img src={user.image} />
+//           <h3>{user.liketotal}</h3>
+//         </div>
+//       );
+//     });
+//   };
 
+  const loading = () => (
+    <section className="user-list">
+      <h1>
+        Loading...
+        <span>
+          <img
+            className="picture"
+            src="https://freesvg.org/img/1544764567.png"
+          />{" "}
+        </span>
+      </h1>
+    </section>
+  );
 
   return (
-    <section className="user-list">{user && user.length ? loaded() : loading()}</section>
+    <section>{user && user.length ? loaded() : loading()}</section>
   );
 }
 
