@@ -2,6 +2,7 @@ import { getUserToken,setUserToken, clearUserToken } from "../utils/authToken"
 import { UserContext } from "../data"
 import { useContext } from "react"
 import RegisterForm from "../components/RegisterForm"
+import LoginForm from "../components/LoginForm"
 
 
 function Auth(props){
@@ -26,7 +27,7 @@ function Auth(props){
             )
     
             const parsedUser = await newUser.json()
-            // console.log(parsedUser)
+            console.log(parsedUser)
     
             // sets local storage
             setUserToken(parsedUser.token)
@@ -46,11 +47,47 @@ function Auth(props){
             setAuth(false);
         }
     }
-
+    const loginUser = async (data) => {
+        try {
+            const configs = {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+    
+            const response = await fetch(
+                "http://localhost:4000/auth/login",
+                configs
+            )
+    
+            const currentUser = await response.json()
+            //console.log(currentUser)
+    
+            if (currentUser.token) {
+                // sets local storage
+                setUserToken(currentUser.token)
+                // put the returned user object in state
+                setUser(currentUser.user)
+                setAuth(currentUser.isLoggedIn)
+    
+                return currentUser
+            } else {
+                throw `Server Error: ${currentUser.statusText}`
+            }
+        } catch (err) {
+            console.log(err)
+            clearUserToken();
+            setAuth(false);
+        }
+    }
+    
     return (
         <section>
             <h1>Login / Register Container</h1>
             <RegisterForm signUp={registerUser}/>
+            <LoginForm signIn={loginUser}/>
         </section>
     )
 }
