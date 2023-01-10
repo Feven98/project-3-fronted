@@ -23,7 +23,7 @@ const User = (props) => {
     const BASE_URL = "https://fev-sol-project3.herokuapp.com"
     const getUser = async () => {
         try {
-            const response = await fetch(`${BASE_URL}/user`)
+            const response = await fetch(BASE_URL)
             // fetch grabs the data from API - (mongo)
             const allUser = await response.json()
             // assuming no errors - translate to JS 
@@ -59,7 +59,7 @@ const User = (props) => {
       }
       console.log(JSON.stringify(currentUser))
       // const response = await fetch(BASE_URL, requestOptions)
-      const response = await fetch(`${BASE_URL}/auth/register`, requestOptions)
+      const response = await fetch(BASE_URL, requestOptions)
       const createPerson = await response.json()
       setUser([...user, createPerson])
       setNewForm({
@@ -120,13 +120,14 @@ const User = (props) => {
         <section className="user-list">
             {user?.map((user,idx) => {
       return (
+        <Link key={user._id} to={`/user/${user._id}`}>
         <div key={idx}>
         {/* <div key={{idx}} */}
           <h1>{user.username}</h1>
           <img src={user.image} />
           <h3>{user.caption}</h3>
         </div>
-          
+        </Link>
             );
     })
   }
