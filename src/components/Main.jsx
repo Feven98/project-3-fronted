@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Auth from "../pages/Auth";
 import Show from "../pages/Show";
 import Edit from "../pages/Edit";
+import ProfilePage from "./allcomponent/Profile";
 
 const Main = () => {
   return (
@@ -17,6 +18,7 @@ const Main = () => {
         <Route path='/user/:id' element={<Show />} />
         <Route path='/post' element={<Post />} />
         <Route path='/user/:id/edit' element={<Edit/>}/>
+        <Route path='/profile/:id' element={<ProfilePage/>}/>
       </Routes>
     </main>
   )

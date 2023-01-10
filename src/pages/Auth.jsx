@@ -22,7 +22,7 @@ function Auth(props){
             }
     
             const newUser = await fetch(
-                "http://localhost:4000/auth/register",
+                "https://fev-sol-project3.herokuapp.com/auth/register",
                 configs
             )
     
@@ -58,7 +58,7 @@ function Auth(props){
             }
     
             const response = await fetch(
-                "http://localhost:4000/auth/login",
+                "https://fev-sol-project3.herokuapp.com/auth/login",
                 configs
             )
     

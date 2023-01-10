@@ -14,13 +14,13 @@ const User = (props) => {
 
     // state to hold formData
     const [newForm, setNewForm] = useState({
-        username: "",
-        caption: "",
+        // username: "",
         image: "",
+        comment: "",
     })
  
     // const BASE_URL = "http://localhost:3001"
-    const BASE_URL = "https://fev-sol-project3.herokuapp.com"
+    const BASE_URL = `https://fev-sol-project3.herokuapp.com/post`
     const getUser = async () => {
         try {
             const response = await fetch(BASE_URL)
@@ -53,7 +53,7 @@ const User = (props) => {
         method: "Post",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(currentUser)
       }
@@ -78,7 +78,7 @@ const User = (props) => {
             <section className="user-list">
             <h2>Create Post</h2>
     <form onSubmit={handleSubmit}  >
-        <label htmlFor='username'>
+        {/* <label htmlFor='username'>
             Username
     <input
           type="text"
@@ -87,7 +87,7 @@ const User = (props) => {
             placeholder="name"
             onChange={handleChange}
         />
-        </label>
+        </label> */}
         <div>
         <label htmlFor='image'>
             Image
@@ -101,13 +101,13 @@ const User = (props) => {
         </label>
         </div>
         <div>
-        <label htmlFor='caption'>
-            Caption
+        <label htmlFor='comment'>
+            comment
     <input
-          type="caption"
-            value={newForm.caption}
-            name="caption"
-            placeholder="caption"
+          type="comment"
+            value={newForm.comment}
+            name="comment"
+            placeholder="comment"
             onChange={handleChange}
         />
         </label>
@@ -120,7 +120,7 @@ const User = (props) => {
         <section className="user-list">
             {user?.map((user,idx) => {
       return (
-        <Link key={user._id} to={`/user/${user._id}`}>
+        <Link key={user._id} to={`/profile/${user._id}`}>
         <div key={idx}>
         {/* <div key={{idx}} */}
           <h1>{user.username}</h1>
