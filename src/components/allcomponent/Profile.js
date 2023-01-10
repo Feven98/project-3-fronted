@@ -1,7 +1,7 @@
 import userEvent from "@testing-library/user-event"
 import { useParams } from "react-router-dom"
 // import Form from "./SignUp"
-import Upload from "./ImageUpload"
+// import Upload from "./ImageUpload"
 import { useEffect, useState } from "react"
 
 const ProfilePage = (props) => {
@@ -49,7 +49,7 @@ return (
 
 </div>
 <h1>WORKING!!!!!</h1>
-<Upload />
+{/* <Upload /> */}
     </div>
 )
 
