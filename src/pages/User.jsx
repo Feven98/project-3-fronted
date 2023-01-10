@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getUserToken } from '../utils/authToken'
 import './User.css'
 const User = (props) => {
+
+  const token = getUserToken()
   const [user, setUser] = useState([])
   // state to hold formData
   const [newForm, setNewForm] = useState({
@@ -41,7 +44,8 @@ const User = (props) => {
       const requestOptions = {
         method: "Post",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(currentUser)
       }
