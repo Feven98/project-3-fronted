@@ -7,7 +7,7 @@ import Header from '../Header/Header';
 // import ProfilePage from '../allcomponent/Profile'; 
 // // import SignUp from './components/SignUp';
 // import { Search } from '../allcomponent/Search';
-import { UserContext } from '../../data';
+import { UserContext } from '../../data'
 import { useState } from 'react';
 
 // console.log(UserContext)
