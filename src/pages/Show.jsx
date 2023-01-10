@@ -72,20 +72,22 @@ const Show = (props) => {
         <>
             <div className="person-card">
                 {/* React optimization / difference */}
-                <h1>{person.name}</h1>
+                <h1>{person.username}</h1>
+                <h2>{person.comment}</h2>
                 {token && isOwner ? <div>
                     <p>Delete Person</p>
                     <button onClick={removePerson}> X </button>
                 </div> : null}
 
                 <img src={person.image || placeholderImage} />
-                <h3>{person.title || "Not title given"}</h3>
+                <h3>{person.caption || "Not caption given"}</h3>
             </div>
-            <div><Link to="/">Back to Home</Link> {"|"} 
+            <div>
+                <Link to="/">Back to Home</Link> {"|"} 
             { 
             isOwner 
             && 
-            <Link to={`/people/${person._id}/edit`}>Edit {person.name}</Link>
+            <Link to={`/user/${person._id}/edit`}>Edit {person.username}</Link>
             }
             </div>
         </>

@@ -5,6 +5,7 @@ import Post from "../pages/Post";
 import Home from "../pages/Home";
 import Auth from "../pages/Auth";
 import Show from "../pages/Show";
+import Edit from "../pages/Edit";
 
 const Main = () => {
   return (
@@ -15,7 +16,7 @@ const Main = () => {
         <Route path='/user' element={<User />} />
         <Route path='/user/:id' element={<Show />} />
         <Route path='/post' element={<Post />} />
-        {/* <Route path='/profile' element={ <ProfilePage /> } /> */}
+        <Route path='/user/:id/edit' element={<Edit/>}/>
       </Routes>
     </main>
   )
