@@ -2,25 +2,24 @@ import { useState, useEffect } from 'react'
 import { Link, useParams, navigate, useNavigate } from 'react-router-dom'
 import { getUserToken } from '../utils/authToken'
 
-const placeholderImage = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+// const placeholderImage = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
 
-const Edit = (props) => {
+const Comment = (props) => {
     // define our state variable - []
     // react state
     const token = getUserToken()
     const [person, setPerson] = useState(null)
-    const [editForm, setEditForm] = useState({
-        username: "",
-        image: "",
-        caption: "",
+    const [comment, setComment] = useState({
+        comment: "",
+        like: "",
     })
 
     const { id } = useParams()
     const BASE_URL = `https://fev-sol-project3.herokuapp.com/user/${id}`
     const navigate = useNavigate()
 
-    if (!token) {
-        navigate('/auth')
+    if(!token){
+      navigate('/auth')
     }
 
     const getPerson = async () => {
@@ -28,7 +27,7 @@ const Edit = (props) => {
             const response = await fetch(BASE_URL)
             const foundPerson = await response.json()
             setPerson(foundPerson)
-            setEditForm(foundPerson)
+            setComment(foundPerson)
         } catch (err) {
             console.log(err)
         }
@@ -38,7 +37,7 @@ const Edit = (props) => {
         // console.log(editForm)
         const userInput = { ...editForm }
         userInput[e.target.name] = e.target.value
-        setEditForm(userInput)
+        setComment(userInput)
     }
 
     const handleSubmit = async (e) => {
@@ -112,55 +111,44 @@ const Edit = (props) => {
     return (
         <div>
             <section>
-                <h2>Create a new person</h2>
+                <h2>Create a new comment</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='name'>
-                            Username
+                            Comment
                             <input
                                 type="text"
-                                id="name"
-                                name="name"
-                                placeholder="enter a person's name"
-                                value={editForm.username}
+                                id="comment"
+                                name="comment"
+                                placeholder="enter a comment"
+                                value={editForm.comment}
                                 onChange={handleChange}
                             />
                         </label>
                     </div>
                     <div>
                         <label htmlFor='image'>
-                            Image
+                            Like
                             <input
                                 type="text"
                                 id="image"
                                 name="image"
-                                placeholder="enter a person's image"
-                                value={editForm.image}
+                                placeholder="like"
+                                value={editForm.like}
                                 onChange={handleChange}
                             />
                         </label>
                     </div>
                     <div>
-                        <label htmlFor='caption'>
-                            Caption
-                            <input
-                                type="text"
-                                id="caption"
-                                name="caption"
-                                placeholder="enter a caption"
-                                value={editForm.caption}
-                                onChange={handleChange}
-                            />
-                        </label>
                         <br />
-                        <input type="submit" value="Edit a post" />
+                        <input type="submit" value="Comment" />
                     </div>
                 </form>
             </section>
-            {person ? loaded() : loading()}
+            {person  ? loaded() : loading()}
         </div >
     )
 
 }
 
-export default Edit
+export default Comment
