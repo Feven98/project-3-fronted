@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
-import { Link, Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useRef, useState } from "react";
+import { Link, Routes, Route, useNavigate, useSearchParams } from 'react-router-dom';
+import { useState } from "react";
 // import { useState } from 'react';
-// import ProfilePage from "./Profile";
+// import ProfilePage from "./Profile";å
+const [name, setName] = useState('')
 
 const handleName = (e) => {
     setName(e.target.value);
@@ -12,7 +14,7 @@ const handleName = (e) => {
   const handleURL = (e) => {
     setURL(e.target.value);
     setSubmitted(false);
-  };
+  }; 
 
   // handling the password change
   // const handlePassword = (e) => {
