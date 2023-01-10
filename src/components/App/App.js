@@ -7,25 +7,23 @@ import Header from '../Header/Header';
 // import ProfilePage from '../allcomponent/Profile'; 
 // // import SignUp from './components/SignUp';
 // import { Search } from '../allcomponent/Search';
+import { UserContext } from '../../data';
+import { useState } from 'react';
 
+// console.log(UserContext)
 
 function App() {
+
+  const { Provider : UserInfo} = UserContext
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null)
+
   return (
     <div className="App">
-
-<Header/>
-<Main/>
-      {/* <div className='nav'>
-      <h1>
-      <a href="/">Home</a>
-      </h1>
-      </div>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/user/:id' element={ <ProfilePage /> } />
-        {/* <Route path='/testing' element={<SignUp />} /> */}
-        {/* <Route path='/form' element={<Search />} />
-      </Routes> */} 
+<UserInfo value={{ example: "insta"}}>
+      <Header />
+      <Main />
+     </UserInfo>
     </div>
   );
 }
