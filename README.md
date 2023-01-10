@@ -2,4 +2,4 @@
 
 ## Link to netlify deployement
 
-Link: [https://tourmaline-sawine-759ef3.netlify.app]
+[https://tourmaline-sawine-759ef3.netlify.app]
