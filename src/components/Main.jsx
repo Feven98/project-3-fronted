@@ -4,15 +4,21 @@ import Profile from '../pages/Profile';
 import { Search } from './allcomponent/Search';
 import User from '../pages/User';
 import Post from "../pages/Post";
+import Home from "../pages/Home";
+import Auth from "../pages/Auth";
+
 
 const Main = () => {
   return (
     <main>
       <Routes>
-      <Route path='/' element={<User />} />
+      <Route path='/' element={<Home />} />
+      <Route path='/auth' element={<Auth />} />
+      <Route path='/user' element={<User />} />
         <Route path='/profile/:id' element={ <Profile /> } />
         <Route path='/post' element={<Post />} />
         <Route path='/search/:id' element={<Search />} />
+       
 
       </Routes>
     </main>
