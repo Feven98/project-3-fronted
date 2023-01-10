@@ -1,6 +1,7 @@
 import { getUserToken,setUserToken, clearUserToken } from "../utils/authToken"
 import { UserContext } from "../data"
 import { useContext } from "react"
+import RegisterForm from "../components/RegisterForm"
 
 
 function Auth(props){
@@ -31,6 +32,7 @@ function Auth(props){
             setUserToken(parsedUser.token)
             // put the returned user object in state
             setUser(parsedUser.user)
+            // setUser(parsedUser.home)
             // adds a boolean cast of the responses isAuthenticated prop
             setAuth(parsedUser.isLoggedIn)
     
@@ -45,7 +47,12 @@ function Auth(props){
         }
     }
 
-    return (<h1>Login / Register Container</h1>)
+    return (
+        <section>
+            <h1>Login / Register Container</h1>
+            <RegisterForm signUp={registerUser}/>
+        </section>
+    )
 }
 
 export default Auth
