@@ -23,7 +23,8 @@ const Show = (props) => {
     // define some local variables
     const URL = `https://fev-sol-project3.herokuapp.com/user/${id}`
 
-    const getPerson = async () => {
+    const getPerson = async (e) => {
+
         try {
             const response = await fetch(URL)
             const result = await response.json()
@@ -68,7 +69,7 @@ const Show = (props) => {
 
     const isLoading = () => (<h2>....Loading</h2>)
 
-    const loaded = () => (
+    const loaded = (e) => (
         <>
             <div className="person-card">
                 {/* React optimization / difference */}

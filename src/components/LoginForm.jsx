@@ -1,7 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
+
 const LoginForm = ({ signIn }) => {
+
+// const {id} = useParams()
 
     const initialState = { username: "", password: "" }
     const [input, setInput] = useState(initialState)
@@ -12,7 +16,7 @@ const LoginForm = ({ signIn }) => {
         const createdUserToken = await signIn(input)
 
         if (createdUserToken) {
-            navigate("/user")
+            navigate(`/user`)
         } else {
             navigate("/")
         }
