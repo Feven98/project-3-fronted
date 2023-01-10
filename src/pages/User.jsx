@@ -1,19 +1,25 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './User.css'
 const User = (props) => {
-    const [user, setUser] = useState([])
-// state to hold formData
-const [newForm, setNewForm] = useState({
-    username: "",
-    image: "",
-    liketotal: "",
-})
 
-    const BASE_URL = "https://fev-sol-project3.herokuapp.com/user"
+  const navigate = useNavigate();
+
+    const [user, setUser] = useState([])
+
+    // state to hold formData
+    const [newForm, setNewForm] = useState({
+        username: "",
+        password: "",
+        image: "",
+    })
+ 
+    // const BASE_URL = "http://localhost:3001"
+    const BASE_URL = "https://fev-sol-project3.herokuapp.com"
     const getUser = async () => {
         try {
-            const response = await fetch(BASE_URL)
+            const response = await fetch(`${BASE_URL}/user`)
             // fetch grabs the data from API - (mongo)
             const allUser = await response.json()
             // assuming no errors - translate to JS 
@@ -26,33 +32,39 @@ const [newForm, setNewForm] = useState({
     }
 
    // handleChange function for form
-   const handleChange = (e) => {
+  const handleChange = (e) => {
     console.log(newForm)
-    const userInput = { ...newForm }
-    console.log(e.target.username)
-    userInput[e.target.username] = e.target.value
+    let userInput = { ...newForm }
+    console.log('t name -->', e.target.name)
+    userInput[e.target.name] = e.target.value
     setNewForm(userInput);
-};
+      // console.log(newForm, 'new')
+  };
 
 const handleSubmit =async(e) => {
-    const currentUser = {...newForm}
+ e.preventDefault();
+
+    const currentPost = {...newForm}
+    console.log(currentPost)
     try{
         const requestOptions = {
             method: "Post",
             headers:{
                 "Content-Type" : "application/json"
             },
-            body: JSON.stringify(currentUser)
+            body: JSON.stringify(currentPost)
         }
-const response = await fetch(BASE_URL, requestOptions)
+
+const response = await fetch(`${BASE_URL}/auth/register`, requestOptions)
 
 const createPerson = await response.json()
 setUser([...user, createPerson])
-setNewForm({
+  setNewForm({
     username: "",
     image: "",
-    liketotal: "",
+    password: "",
 })
+//navigate(`/profile/${user._id}`)
     }catch(err){
         console.log(err)
     }
@@ -64,13 +76,13 @@ setNewForm({
         return (<>
             <section className="people-list">
             <h2>Create Post</h2>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
         <label htmlFor='username'>
             Username
     <input
           type="text"
             value={newForm.username}
-            username="name"
+            name="username"
             placeholder="name"
             onChange={handleChange}
         />
@@ -81,35 +93,35 @@ setNewForm({
     <input
           type="pic"
             value={newForm.image}
-            image="image"
+            name="image"
             placeholder="image"
             onChange={handleChange}
         />
         </label>
         </div>
         <div>
-        <label htmlFor='username'>
-            Like-Total
+        <label htmlFor='password'>
+            Password
     <input
-          type="like"
-            value={newForm.liketotal}
-            liketotal="like"
+          type="password"
+            value={newForm.password}
+            name="password"
             placeholder="like"
             onChange={handleChange}
         />
         </label>
         <br/>
-        <input type="Submit" value="Create Post"/>
+        <input type="Submit" value="Create Post" onChange={handleChange}
+        />
         </div>
         </form>
         </section>
         <section className="user-list">
-            {user?.map((user) => {
+            {user?.map((user, idx) => {
       return (
-        <div key={user._id}>
+        <div key={idx}>
           <h1>{user.username}</h1>
           <img src={user.image} />
-          <h3>{user.liketotal}</h3>
         </div>
            
             );
@@ -151,22 +163,22 @@ getUser()
 //     });
 //   };
 
-  const loading = () => (
-    <section className="user-list">
-      <h1>
-        Loading...
-        <span>
-          <img
-            className="picture"
-            src="https://freesvg.org/img/1544764567.png"
-          />{" "}
-        </span>
-      </h1>
-    </section>
-  );
+  // const loading = () => (
+  //   <section className="user-list">
+  //     <h1>
+  //       Loading...
+  //       <span>
+  //         <img
+  //           className="picture"
+  //           src="https://freesvg.org/img/1544764567.png"
+  //         />{" "}
+  //       </span>
+  //     </h1>
+  //   </section>
+  // );
 
   return (
-    <section className="user-list">{user && user.length ? loaded() : loading()}</section>
+    <section className="user-list">{loaded()}</section>
   );
 }
 

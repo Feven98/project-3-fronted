@@ -9,7 +9,7 @@ const Main = () => {
     <main>
       <Routes>
       <Route path='/' element={<User />} />
-        <Route path='/profile/:id' element={ <ProfilePage /> } />
+        <Route path='/profile' element={ <ProfilePage /> } />
         {/* <Route path='/testing' element={<SignUp />} /> */}
         <Route path='/search/:id' element={<Search />} />
       </Routes>
