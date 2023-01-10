@@ -14,16 +14,21 @@ import { useState } from 'react';
 
 function App() {
 
-  const { Provider : UserInfo} = UserContext
+  const { Provider: UserInfo } = UserContext
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
 
   return (
     <div className="App">
-<UserInfo value={{ example: "insta"}}>
-      <Header />
-      <Main />
-     </UserInfo>
+      <UserInfo value={{
+        isAuthenticated,
+        setAuth: setIsAuthenticated,
+        currentUser,
+        setUser: setCurrentUser
+      }}>
+        <Header />
+        <Main />
+      </UserInfo>
     </div>
   );
 }
