@@ -19,8 +19,8 @@ const Edit = (props) => {
     const BASE_URL = `https://fev-sol-project3.herokuapp.com/user/${id}`
     const navigate = useNavigate()
 
-    if(!token){
-      navigate('/auth')
+    if (!token) {
+        navigate('/auth')
     }
 
     const getPerson = async () => {
@@ -157,7 +157,7 @@ const Edit = (props) => {
                     </div>
                 </form>
             </section>
-            {person  ? loaded() : loading()}
+            {person ? loaded() : loading()}
         </div >
     )
 
