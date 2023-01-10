@@ -1,54 +1,54 @@
-import {useNavigate} from 'react-router-dom';
-import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-const RegisterForm = ({signUp}) => {
-  
-	const initialState = { username: "", password: ""}
-  const [input, setInput] = useState(initialState)
-	const navigate = useNavigate()
+const RegisterForm = ({ signUp }) => {
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const createdUserToken = await signUp(input)
+    const initialState = { username: "", password: "" }
+    const [input, setInput] = useState(initialState)
+    const navigate = useNavigate()
 
-    if (createdUserToken) {
-      navigate("/user")
-    } else {
-      navigate("/")
-    }
-		setInput(initialState);
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const createdUserToken = await signUp(input)
 
-  const handleChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
+        if (createdUserToken) {
+            navigate("/user")
+        } else {
+            navigate("/")
+        }
+        setInput(initialState);
+    };
 
-  return (
-    <>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Name: </label>
-        <input
-          id="username"
-          name="username"
-          value={input.username}
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-        <label htmlFor="password">Password: </label>
-        <input
-          id="password"
-          name="password"
-          value={input.password}
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-        <input type="submit" value="Sign Up" />
-      </form>
-    </>
-  );
+    const handleChange = (e) => {
+        setInput({ ...input, [e.target.name]: e.target.value });
+    };
+
+    return (
+        <>
+            <h1>Register</h1>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="username">Name: </label>
+                <input
+                    id="username"
+                    name="username"
+                    value={input.username}
+                    onChange={handleChange}
+                />
+                <br />
+                <br />
+                <label htmlFor="password">Password: </label>
+                <input
+                    id="password"
+                    name="password"
+                    value={input.password}
+                    onChange={handleChange}
+                />
+                <br />
+                <br />
+                <input type="submit" value="Sign Up" />
+            </form>
+        </>
+    );
 };
 
 export default RegisterForm
