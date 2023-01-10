@@ -14,6 +14,7 @@ const Header = (props) => {
                     />
                 </Link>
             </nav>
+            <img style={{width:"90%"}} src="https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266_1280.jpg"/>
         </header>
     )
   }
