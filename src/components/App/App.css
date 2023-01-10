@@ -1,0 +1,51 @@
+.nav{
+    border: 1px solid black;
+    background-color: cornflowerblue;
+    height: 10vh;
+    width:100%;
+    display:flex;
+    justify-content: flex-start;
+    overflow: auto;
+  }
+
+.logo{
+    height:9vh;
+    margin: 10px
+}
+.profileHeader{
+    height:9vh;
+    margin: 10px
+}
+.profilePic{
+    border-radius: 100px 100px 100px 100px;
+    height: 200px;
+    width:200px;
+    display:flex;
+    justify-content: flex-end;
+  }
+  .pic{
+    height: 200px;
+    width:200px;
+  }
+  .upperProfile{
+    height:30vh;
+    width:100%;
+    overflow: auto; 
+    display:flex;
+    justify-content: flex-start;
+  }
+  .divider{
+    height:2vh;
+    width:100%;
+  }
+  h3{
+    margin-left: 20vw;
+    font-size: 25px;
+  }
+  /* .profile{
+    
+  } */
+  .post{
+height:30vh;
+width:30vh;
+  }
