@@ -7,6 +7,7 @@ import Auth from "../pages/Auth";
 import Show from "../pages/Show";
 import Edit from "../pages/Edit";
 import ProfilePage from "./allcomponent/Profile";
+import ProfilePage from "../pages/profile/profile";
 
 const Main = () => {
   return (

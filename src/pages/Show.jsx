@@ -67,7 +67,7 @@ const Show = (props) => {
     const isOwner = currentUser?._id === person?.owner?._id
 
     const isLoading = () => (<h2>....Loading</h2>)
-    
+
     const loaded = () => (
         <>
             <div className="person-card">
@@ -83,12 +83,12 @@ const Show = (props) => {
                 <h3>{person.caption || "Not caption given"}</h3>
             </div>
             <div>
-                <Link to="/">Back to Home</Link> {"|"} 
-            { 
-            isOwner 
-            && 
-            <Link to={`/user/${person._id}/edit`}>Edit {person.username}</Link>
-            }
+                <Link to="/">Back to Home</Link> {"|"}
+                {
+                    isOwner
+                    &&
+                    <Link to={`/user/${person._id}/edit`}>Edit {person.username}</Link>
+                }
             </div>
         </>
     )

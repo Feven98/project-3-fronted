@@ -1,3 +1,4 @@
+import { upload } from "@testing-library/user-event/dist/upload";
 import React, {useState, useEffect} from "react";
 
 export default function Upload(){
@@ -51,12 +52,4 @@ return (
 <img src={imageURLs[0]}></img>
 </div>
 );
-
-
-
-
-
-
-
-
 }
