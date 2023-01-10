@@ -18,7 +18,7 @@ const Main = () => {
         <Route path='/user/:id' element={<Show />} />
         <Route path='/post' element={<Post />} />
         <Route path='/user/:id/edit' element={<Edit/>}/>
-        <Route path='/user/:id/edit' element={<ProfilePage/>}/>
+        <Route path='/profile' element={<ProfilePage/>}/>
       </Routes>
     </main>
   )
