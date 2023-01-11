@@ -8,6 +8,7 @@ import Show from "../pages/Show";
 // import Edit from "../pages/Edit";
 import EditImage from "../pages/EditImage";
 import ProfilePage from "./allcomponent/Profile";
+import Showimage from "../pages/Showimage";
 
 const Main = () => {
   return (
@@ -16,10 +17,10 @@ const Main = () => {
         <Route path='/' element={<Home />} />
         <Route path='/auth' element={<Auth />} />
         {/* <Route path='/user' element={<User />} /> */}
-        <Route path='/post/:id' element={<Show />} />
+        {/* <Route path='/post/:id' element={<Show />} /> */}
         <Route path='/post' element={<Post />} />
         <Route path='/post/:id/edit' element={<EditImage/>}/>
-        <Route path='/profile/:id' element={<ProfilePage/>}/>
+        <Route path='/post/:id' element={<Showimage/>}/>
       </Routes>
     </main>
   )
