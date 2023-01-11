@@ -25,5 +25,5 @@ export default function Showimage() {
             <img src={image.image}/>
         </>
     )
-
+ 
     }
