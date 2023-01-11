@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { getUserToken } from '../utils/authToken'
-import { UserContext } from '../data'
+import { UserContext } from '../data';
+import '../components/App/App.css';
 
 
 const placeholderImage = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"

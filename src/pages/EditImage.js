@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-
+import '../components/App/App.css';
 
 export default function EditImage(){
 
@@ -72,6 +72,7 @@ return (
             <input type="submit" value="Confirm Edit" />
 
         </form>
+        <img src={form.image} />
 
     </>
 )
