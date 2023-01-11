@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getUserToken } from '../utils/authToken'
 import { useNavigate } from 'react-router-dom'
-import './User.css'
+import '../components/App/App.css'
+<compo></compo>
 const Home = (props) => {
 
   const token = getUserToken()
@@ -120,15 +121,14 @@ const Home = (props) => {
         <section className="user-list">
             {user?.map((user,idx) => {
       return (
-        <Link key={user._id} to={`/post/${user._id}/edit`}>
-        <div key={idx}>
+        <div className='homeContainer' key={idx}>
         {/* <div key={{idx}} */}
-          <h1>{user.username}</h1>
-          <img src={user.image} />
-          <h3>{user.caption}</h3>
-          <button>Edit</button>
+          <img src={user.image} className='homeImage'/>
+          <h3 className='caption'>{user.caption}</h3>
+          <Link key={user._id} to={`/post/${user._id}/edit`}>
+          <button className='EditButton'>Edit</button>
+          </Link> 
         </div>
-        </Link>
             );
     })
   }
