@@ -38,7 +38,7 @@ useEffect(() => {
 }, [])
 
 
-
+console.log(user)
 
 
 return (

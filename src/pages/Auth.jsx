@@ -71,7 +71,8 @@ function Auth(props){
                 // put the returned user object in state
                 setUser(currentUser.user)
                 setAuth(currentUser.isLoggedIn)
-    
+                setUser(currentUser.home)
+                console.log(currentUser)
                 return currentUser
             } else {
                 throw `Server Error: ${currentUser.statusText}`

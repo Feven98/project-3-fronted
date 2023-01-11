@@ -7,28 +7,27 @@ const placeholderImage = "https://st3.depositphotos.com/6672868/13701/v/450/depo
 const Edit = (props) => {
     // define our state variable - []
     // react state
-    const token = getUserToken()
-    const [person, setPerson] = useState(null)
+    // const token = getUserToken()
+    const [image, setimage] = useState(null)
     const [editForm, setEditForm] = useState({
-        username: "",
         image: "",
-        caption: "",
+        comment: "",
     })
 
     const { id } = useParams()
     const BASE_URL = `https://fev-sol-project3.herokuapp.com/user/${id}`
     const navigate = useNavigate()
 
-    if (!token) {
-        navigate('/auth')
-    }
+    // if (!token) {
+    //     navigate('/auth')
+    // }
 
-    const getPerson = async () => {
+    const getimage = async () => {
         try {
             const response = await fetch(BASE_URL)
-            const foundPerson = await response.json()
-            setPerson(foundPerson)
-            setEditForm(foundPerson)
+            const foundimage = await response.json()
+            setimage(foundimage)
+            setEditForm(foundimage)
         } catch (err) {
             console.log(err)
         }
@@ -45,7 +44,7 @@ const Edit = (props) => {
         // 0. prevent default (event object method)
         e.preventDefault()
         // 1. capturing our local state
-        const currentState = { ...person, ...editForm }
+        const currentState = { ...image, ...editForm }
         console.log(currentState)
         // check any fields for property data types / truthy value (function call - stretch)
         try {
@@ -64,8 +63,8 @@ const Edit = (props) => {
             const response = await fetch(BASE_URL, requestOptions)
             // 4. check our response - 
             // 5. parse the data from the response into JS (from JSON) 
-            const updatedPerson = await response.json()
-            console.log(updatedPerson)
+            const updatedimage = await response.json()
+            console.log(updatedimage)
             // update local state with response (json from be)
             navigate(`/user/${id}`)
         } catch (err) {
@@ -76,13 +75,12 @@ const Edit = (props) => {
     const loaded = () => {
         return (<>
             <section>
-                <div className="person-card">
+                <div className="image-card">
                     {/* React optimization / difference */}
-                    <h1>{person.username}</h1>
-                    <img src={person.image || placeholderImage} />
-                    <h3>{person.caption || "Not caption given"}</h3>
+                    <img src={image.image || placeholderImage} />
+                    <h3>{image.comment || "Not caption given"}</h3>
                 </div>
-                <Link to={`/user/${id}`}>Back to {person.name}</Link>
+                {/* <Link to={`/user/${id}`}>Back to {image.name}</Link> */}
             </section>
 
         </>
@@ -105,14 +103,14 @@ const Edit = (props) => {
     );
 
     useEffect(() => {
-        getPerson()
+        getimage()
     }, [])
     // useEffect takes two arguments -> runs function upon component mount
     // react mount -> 
     return (
         <div>
             <section>
-                <h2>Create a new person</h2>
+                <h2>Create a new image</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='name'>
@@ -121,7 +119,7 @@ const Edit = (props) => {
                                 type="text"
                                 id="name"
                                 name="name"
-                                placeholder="enter a person's name"
+                                placeholder="enter a image's name"
                                 value={editForm.username}
                                 onChange={handleChange}
                             />
@@ -134,7 +132,7 @@ const Edit = (props) => {
                                 type="text"
                                 id="image"
                                 name="image"
-                                placeholder="enter a person's image"
+                                placeholder="enter a image's image"
                                 value={editForm.image}
                                 onChange={handleChange}
                             />
@@ -157,7 +155,7 @@ const Edit = (props) => {
                     </div>
                 </form>
             </section>
-            {person ? loaded() : loading()}
+            {image ? loaded() : loading()}
         </div >
     )
 

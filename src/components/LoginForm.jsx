@@ -55,6 +55,7 @@ const token = getUserToken()
       const response = await fetch(BASE_URL, requestOptions)
       const createPerson = await response.json()
       setUser([...user, createPerson])
+      console.log(user)
       setNewForm({
         username: "",
         password: "",
@@ -67,8 +68,10 @@ const token = getUserToken()
 
     if (createdUserToken) {
         console.log(user.username)
-        navigate(`/profile/${user.username}`)
-        // navigate(`/profile${user._id}`)
+        console.log(user)
+        console.log(currentUser)
+        // navigate(`/profile/${user.username}`)
+        navigate(`/profile/${user.id}`)
     } else {
         navigate("/")
 
@@ -78,21 +81,6 @@ const token = getUserToken()
 
 
   }
-
-    // const handleSubmi = async (e) => {
-    //     e.preventDefault()
-
-
-    //     const createdUserToken = await signIn(input)
-
-    //     if (createdUserToken) {
-    //         navigate(`/user`)
-    //     } else {
-    //         navigate("/")
-    //     }
-    //     setInput(initialState);
-    //     setUser(initialState)
-    // };
 
     const handleChange = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
