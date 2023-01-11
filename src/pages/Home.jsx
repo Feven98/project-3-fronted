@@ -120,15 +120,17 @@ const Home = (props) => {
         <section className="user-list">
             {user?.map((user,idx) => {
       return (
-        <Link key={user._id} to={`/post/${user._id}/edit`}>
+        // <Link key={user._id} to={`/post/${user._id}/edit`}>
         <div key={idx}>
         {/* <div key={{idx}} */}
           <h1>{user.username}</h1>
           <img src={user.image} />
           <h3>{user.caption}</h3>
+          <Link key={user._id} to={`/post/${user._id}/edit`}>
           <button>Edit</button>
+          </Link>
         </div>
-        </Link>
+       
             );
     })
   }

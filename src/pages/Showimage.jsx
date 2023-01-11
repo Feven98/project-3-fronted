@@ -1,19 +1,13 @@
-import { useState } from "react"
-
-
-const Showimage = (props) => {
-
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+export default function Showimage() {
     const {id} = useParams()
-
     const URL=`https://fev-sol-project3.herokuapp.com/post/${id}`
-
     const [image, setImage] = useState({
         image: "",
         caption: ""
     })
-    console.log(props)
    const getPerson = async (e) => {
-
         try {
             const response = await fetch(URL)
             const result = await response.json()
@@ -25,14 +19,9 @@ const Showimage = (props) => {
     }
     useEffect(() => { getPerson() })
     return (
-
-        <>   
-            <h1>Edit image</h1>
+        <div>
             <img src={image.image}/>
-
-        </>
+        </div>
     )
+    }
 
-}
-
-export default Showimage
