@@ -61,6 +61,7 @@ const Home = (props) => {
       // const response = await fetch(BASE_URL, requestOptions)
       const response = await fetch(BASE_URL, requestOptions)
       const createPerson = await response.json()
+      console.log(createPerson)
       setUser([...user, createPerson])
       setNewForm({
         username: "",
