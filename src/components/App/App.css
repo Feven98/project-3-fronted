@@ -79,3 +79,16 @@ vertical-align: middle;
   height: 25vh;
   
 }
+.previewContainer{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.previewImage{
+  height:50vh;
+  width: 50vw;
+}
+.captonContainer{
+  
+}

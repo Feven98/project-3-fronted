@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { getUserToken } from '../utils/authToken'
 import { useNavigate } from 'react-router-dom'
 import '../components/App/App.css'
-<compo></compo>
+import Comment from "../pages/CommentPost";
+
 const Home = (props) => {
 
-  const token = getUserToken()
   // console.log(err)
 
   const navigate = useNavigate();
@@ -54,26 +54,24 @@ const Home = (props) => {
         method: "Post",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(currentUser)
       }
       console.log(JSON.stringify(currentUser))
       // const response = await fetch(BASE_URL, requestOptions)
       const response = await fetch(BASE_URL, requestOptions)
-      const createPerson = await response.json()
-      setUser([...user, createPerson])
+      const createPost = await response.json()
+      setUser([...user, createPost])
       setNewForm({
-        username: "",
         image: "",
-        caption: "",
+        comment: "",
       })
     } catch (err) {
       console.log(err)
     }
   }
 
-
+console.log(user)
   const loaded = () => {
     return (<>
       <section className="user-list">
@@ -105,7 +103,7 @@ const Home = (props) => {
             <label htmlFor='comment'>
               caption
               <input
-                type="caption"
+                type="comment"
                 value={newForm.comment}
                 name="comment"
                 placeholder="comment"
@@ -124,8 +122,11 @@ const Home = (props) => {
             <div className='allContainer'>
               <div className='postContainer' key={idx} style={{ border: '1px solid black' }}>
                 {/* <div key={{idx}} */}
+                <Link key ={user._id} to={`/post/${user._id}`}>
                 <img src={user.image} className='homeImage' />
                 <h3 className='caption'>{user.caption}</h3>
+                </Link>
+              <Comment />
                 <Link key={user._id} to={`/post/${user._id}/edit`}>
                   <button className='EditButton'>Edit</button>
                 </Link>

@@ -8,6 +8,7 @@ import Auth from "../pages/Auth";
 import EditImage from "../pages/EditImage";
 import ProfilePage from "./allcomponent/Profile";
 import Showimage from "../pages/ShowImage";
+import Comment from "../pages/CommentPost";
 const Main = () => {
   return (
     <main>
@@ -18,6 +19,7 @@ const Main = () => {
         <Route path='/post/:id' element={<Showimage />} />
         <Route path='/post/:id/edit' element={<EditImage/>}/>
         <Route path='/profile/:id' element={<ProfilePage/>}/>
+        <Route path='/comment' element={<Comment />} />
       </Routes>
     </main>
   )

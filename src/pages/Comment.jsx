@@ -4,14 +4,13 @@ import { getUserToken } from '../utils/authToken'
 
 // const placeholderImage = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
 
-const Comment = (props) => {
+const Comments = (props) => {
     // define our state variable - []
     // react state
-    const token = getUserToken()
+    // const token = getUserToken()
     const [person, setPerson] = useState(null)
     const [comment, setComment] = useState({
         comment: "",
-        like: "",
     })
 
     const { id } = useParams()
@@ -49,10 +48,9 @@ const Comment = (props) => {
         // check any fields for property data types / truthy value (function call - stretch)
         try {
             const requestOptions = {
-                method: "PUT",
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(currentState)
             }

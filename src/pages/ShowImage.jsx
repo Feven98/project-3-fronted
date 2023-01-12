@@ -8,22 +8,24 @@ export default function Showimage() {
         image: "",
         caption: ""
     })
-   const getPerson = async (e) => {
+   const getImage = async (e) => {
         try {
             const response = await fetch(URL)
             const result = await response.json()
-            console.log(result)
+            // console.log(result)
             setImage(result)
         } catch (err) {
             console.log(err)
         }
     }
-    useEffect(() => { getPerson() })
+    useEffect(() => { getImage() })
     return (
-        <>
-            <h1>Edit image</h1>
-            <img src={image.image}/>
-        </>
+        <div className="previewContainer" style={{border: '5px solid black'}}>
+            <img style={{border: '5px solid black'}}className="previewImage" src={image.image}/>
+            <div className="captionContainer" style={{border:'5px solid black'}}>
+            <h3>{image.caption}</h3>
+            </div>
+        </div>
     )
  
     }
