@@ -1,3 +1,10 @@
+body{
+  background: radial-gradient(circle at center, cornflowerblue 40%, rgba(221, 51, 221, 0.538) 100%);
+  /* display: flex;
+  justify-content: center; */
+  background: radial-gradient(circle at center, rgba(221,51,221,0.538) 30%, cornflowerblue 100%)
+
+}
 .nav{
     border: 1px solid black;
     background-color: cornflowerblue;
@@ -6,6 +13,7 @@
     display:flex;
     justify-content: flex-start;
     overflow: auto;
+    min-width: 100%;
   }
 
 .logo{
@@ -49,8 +57,23 @@
 height:30vh;
 width:30vh;
   }
-.homeContainer{
-display:block;
+  .allContainer{
+    width: 100%;
+display: flex;
+justify-content: center;
+  }
+.postContainer{
+  background-color: cornflowerblue;
+  max-width: 40vw;
+  min-width: 40vw;
+  height:34vh;
+  border-radius: 20px 20px 0 0;
+display:flex;
+flex-direction: column;
+justify-content: center;
+overflow: auto;
+margin: 15px;
+vertical-align: middle;
 }
 .homeImage{
   height: 25vh;

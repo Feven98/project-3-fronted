@@ -11,31 +11,31 @@ const Home = (props) => {
 
   const navigate = useNavigate();
 
-    const [user, setUser] = useState([])
+  const [user, setUser] = useState([])
 
-    // state to hold formData
-    const [newForm, setNewForm] = useState({
-        // username: "",
-        image: "",
-        comment: "",
-    })
- 
-    // const BASE_URL = "http://localhost:3001"
-    const BASE_URL = `https://fev-sol-project3.herokuapp.com/post`
-    const getUser = async () => {
-        try {
-            const response = await fetch(BASE_URL)
-            // fetch grabs the data from API - (mongo)
-            const allUser = await response.json()
-            // assuming no errors - translate to JS 
-            console.log(allUser)
-            setUser(allUser)
-            // store that data (from api) in react state
-        } catch (err) {
-            console.log(err)
-        }
+  // state to hold formData
+  const [newForm, setNewForm] = useState({
+    // username: "",
+    image: "",
+    comment: "",
+  })
+
+  // const BASE_URL = "http://localhost:3001"
+  const BASE_URL = `https://fev-sol-project3.herokuapp.com/post`
+  const getUser = async () => {
+    try {
+      const response = await fetch(BASE_URL)
+      // fetch grabs the data from API - (mongo)
+      const allUser = await response.json()
+      // assuming no errors - translate to JS 
+      console.log(allUser)
+      setUser(allUser)
+      // store that data (from api) in react state
+    } catch (err) {
+      console.log(err)
     }
-  
+  }
+
 
   // handleChange function for form
   const handleChange = (e) => {
@@ -74,12 +74,12 @@ const Home = (props) => {
   }
 
 
-    const loaded = () => {
-        return (<>
-            <section className="user-list">
-            <h2>Create Post</h2>
-    <form onSubmit={handleSubmit}  >
-        {/* <label htmlFor='username'>
+  const loaded = () => {
+    return (<>
+      <section className="user-list">
+        <h2>Create Post</h2>
+        <form onSubmit={handleSubmit}  >
+          {/* <label htmlFor='username'>
             Username
     <input
           type="text"
@@ -89,57 +89,59 @@ const Home = (props) => {
             onChange={handleChange}
         />
         </label> */}
-        <div>
-        <label htmlFor='image'>
-            Image
-    <input
-          type="pic"
-            value={newForm.image}
-            name="image"
-            placeholder="image"
-            onChange={handleChange}
-        />
-        </label>
-        </div>
-        <div>
-        <label htmlFor='comment'>
-            comment
-    <input
-          type="comment"
-            value={newForm.comment}
-            name="comment"
-            placeholder="comment"
-            onChange={handleChange}
-        />
-        </label>
-        <br/>
-        <input type="Submit" value="Create Post" onChange={handleChange} 
-        />
-        </div>
+          <div>
+            <label htmlFor='image'>
+              Image
+              <input
+                type="pic"
+                value={newForm.image}
+                name="image"
+                placeholder="image"
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor='comment'>
+              caption
+              <input
+                type="caption"
+                value={newForm.comment}
+                name="comment"
+                placeholder="comment"
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <input type="Submit" value="Create Post" onChange={handleChange}
+            />
+          </div>
         </form>
-        </section>
-        <section className="user-list">
-            {user?.map((user,idx) => {
-      return (
-        <div className='homeContainer' key={idx}>
-        {/* <div key={{idx}} */}
-          <img src={user.image} className='homeImage'/>
-          <h3 className='caption'>{user.caption}</h3>
-          <Link key={user._id} to={`/post/${user._id}/edit`}>
-          <button className='EditButton'>Edit</button>
-          </Link> 
-        </div>
-            );
-    })
+      </section>
+      <section className="user-list">
+        {user?.map((user, idx) => {
+          return (
+            <div className='allContainer'>
+              <div className='postContainer' key={idx} style={{ border: '1px solid black' }}>
+                {/* <div key={{idx}} */}
+                <img src={user.image} className='homeImage' />
+                <h3 className='caption'>{user.caption}</h3>
+                <Link key={user._id} to={`/post/${user._id}/edit`}>
+                  <button className='EditButton'>Edit</button>
+                </Link>
+              </div>
+            </div>
+          );
+        })
+        }
+      </section>
+    </>
+    )
   }
-</section>
-</>
-)
-}
   useEffect(() => {
     getUser()
   }, [])
-  
+
 
   const loading = () => (
     <section className="user-list">
@@ -158,7 +160,7 @@ const Home = (props) => {
   return (
     <section>{user && user.length ? loaded() : loading()}</section>
   );
-  }
+}
 
 
 
