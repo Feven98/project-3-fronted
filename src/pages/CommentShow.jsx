@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-
-
+import { Link } from "react-router-dom";
+import Comment from "./CommentPost";
 
 export default function ShowComment(){
-
+    const [user, setUser] = useState([])
     const [comment, setComment] = useState({
         comment: "",
     })
@@ -17,7 +17,8 @@ export default function ShowComment(){
             const response = await fetch(BASE_URL)
             const foundComment = await response.json()
             setComment(foundComment)
-            console.log(comment)
+            console.log(foundComment)
+            console.log(comment.comment)
         } catch (err) {
             console.log(err)
         }
@@ -45,6 +46,27 @@ export default function ShowComment(){
             console.log(err)
         }
     }
+    const loaded = () => {
+    return(
+          <section className="user-list">
+            {comment?.map((comment, idx) => {
+              return (
+                <div className='allContainer'>
+                  <div className='postContainer' key={idx} style={{ border: '1px solid black' }}>
+                    {/* all comment about the post should go here */}
+                    {/* <Comment /> */}
+                    {/* <Link key={comment._id} to={`/post/${user._id}/edit`}> */}
+                      {/* <button className='EditButton'>Edit</button> */}
+                      <h3 className='comment'>{comment.comment}</h3>
+                    {/* </Link> */}
+                  </div>
+                </div>
+              );
+            })
+            }
+          </section>
+        )
+}
 
 useEffect(() => {
     getComment();
@@ -54,7 +76,7 @@ useEffect(() => {
 
 return (
     <div>
-    {/* <h3>{comment[0].comment}</h3> */}
+    <h3>{comment.comment}</h3>
     </div>
 )
 
