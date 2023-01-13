@@ -12,7 +12,7 @@ const Home = (props) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState([])
-
+  const [comment, setComment] = useState([])
   // state to hold formData
   const [newForm, setNewForm] = useState({
     // username: "",
@@ -30,6 +30,21 @@ const Home = (props) => {
       // assuming no errors - translate to JS 
       console.log(allUser)
       setUser(allUser)
+      // store that data (from api) in react state
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  // comment fetch
+  const URL = `https://fev-sol-project3.herokuapp.com/comment`
+  const getComment = async () => {
+    try {
+      const response = await fetch(URL)
+      // fetch grabs the data from API - (mongo)
+      const allComment = await response.json()
+      // assuming no errors - translate to JS 
+      console.log(allComment)
+      setComment(allComment)
       // store that data (from api) in react state
     } catch (err) {
       console.log(err)
@@ -71,7 +86,7 @@ const Home = (props) => {
     }
   }
 
-console.log(user)
+  console.log(user)
   const loaded = () => {
     return (<>
       <section className="user-list">
@@ -122,13 +137,15 @@ console.log(user)
             <div className='allContainer'>
               <div className='postContainer' key={idx} style={{ border: '1px solid black' }}>
                 {/* <div key={{idx}} */}
-                <Link key ={user._id} to={`/post/${user._id}`}>
-                <img src={user.image} className='homeImage' />
-                <h3 className='caption'>{user.caption}</h3>
+                <Link key={user._id} to={`/post/${user._id}`}>
+                  <img src={user.image} className='homeImage' />
+                  <h3 className='caption'>{user.caption}</h3>
                 </Link>
-              <Comment />
+                {/* all comment about the post should go here */}
+                <Comment />
                 <Link key={user._id} to={`/post/${user._id}/edit`}>
                   <button className='EditButton'>Edit</button>
+                  <h3 className='comment'>{comment.comment}</h3>
                 </Link>
               </div>
             </div>
@@ -141,6 +158,7 @@ console.log(user)
   }
   useEffect(() => {
     getUser()
+    getComment()
   }, [])
 
 

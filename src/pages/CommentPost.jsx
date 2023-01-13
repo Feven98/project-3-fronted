@@ -37,12 +37,12 @@ export default function Comment() {
     }
 
     const handleSubmit = async (e) => {
-       
+
         e.preventDefault()
-      
-        const currentState = {...comment }
+
+        const currentState = { ...comment }
         console.log(currentState)
- 
+
         try {
             const requestOptions = {
                 method: "POST",
@@ -52,25 +52,25 @@ export default function Comment() {
                 body: JSON.stringify(currentState)
             }
             const response = await fetch(BASE_URL, requestOptions)
-            const updatedPerson = await response.json()
-            console.log(updatedPerson)
-           
+            const updatedComment = await response.json()
+            console.log(updatedComment)
+
         } catch (err) {
             console.log(err)
         }
     }
 
-useEffect(() => {
-    getPerson()
-}, [])
+    useEffect(() => {
+        getPerson()
+    }, [])
 
 
-return (
-    <div className='comment-container'>
-        <div className="comment-card" style={{border:'1px solid black'}}>
-        {/* React optimization / difference */}
-        <form onSubmit={handleSubmit}>
-        <div>
+    return (
+        <div className='comment-container'>
+            <div className="comment-card" style={{ border: '1px solid black' }}>
+                {/* React optimization / difference */}
+                <form onSubmit={handleSubmit}>
+                    <div>
                         <label htmlFor='name'>
                             Comment
                             <input
@@ -80,13 +80,13 @@ return (
                                 placeholder="enter a comment"
                                 value={comment.comment}
                                 onChange={handleChange}
-                                />
+                            />
                         </label>
                     </div>
                     <input type="submit" value="Comment" />
-        </form>
-        <ShowComment />
-    </div>
-</div>
-)
+                </form>
+                <ShowComment />
+            </div>
+        </div>
+    )
 }
