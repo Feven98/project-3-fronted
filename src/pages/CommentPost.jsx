@@ -15,7 +15,7 @@ export default function Comment() {
     })
 
     const { id } = useParams()
-    const BASE_URL = `https://fev-sol-project3.herokuapp.com/comment/`
+    const BASE_URL = `https://fev-sol-project3.herokuapp.com/comment`
     const navigate = useNavigate()
 
     const getPerson = async () => {
@@ -85,7 +85,7 @@ return (
                     </div>
                     <input type="submit" value="Comment" />
         </form>
-        <ShowComment />
+        {/* <ShowComment /> */}
     </div>
 </div>
 )
