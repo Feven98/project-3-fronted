@@ -65,13 +65,13 @@ let stringifyID = JSON.stringify({id}.id)
 
 console.log(stringifyID)
 
-// console.log(typeof stringifyID)
+// console.log(typeof stringifyID).
 // console.log(typeof allComments[21].post)
     const filteredComments = []
     // console.log(allComments[21].post)
     console.log(allComments)
     // console.log(allComments[21].post)
-    return (
+    return ( 
         <div className="previewContainer" style={{ border: '5px solid black' }}>
             <img style={{ border: '5px solid black' }} className="previewImage" src={image.image} />
             <div className="captionContainer" style={{ border: '5px solid black' }}>
