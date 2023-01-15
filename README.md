@@ -42,7 +42,7 @@ Backend : https://github.com/Feven98/Project-3-backend
 
 ## Getting Started
 
-- Fork and clone thi respiratory (both frontend and backend)
+- Fork and clone this respiratory (both frontend and backend)
 - Then install dependencies (npm i or npm install)
 - Then you can open vs code (code .) and run your local server (npm start)
 
