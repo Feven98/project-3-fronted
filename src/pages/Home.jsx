@@ -92,43 +92,38 @@ const Home = (props) => {
       <section className="user-list">
         <h2>Create Post</h2>
         <form onSubmit={handleSubmit}  >
-          {/* <label htmlFor='username'>
-            Username
-    <input
-          type="text"
-            value={newForm.username}
-            name="username"
-            placeholder="name"
-            onChange={handleChange}
-        />
-        </label> */}
-          <div>
-            <label htmlFor='image'>
+          <div className='imagePost'>
+            <label htmlFor='image' className='imageLabel'>
               Image
               <input
                 type="pic"
                 value={newForm.image}
                 name="image"
-                placeholder="image"
+                placeholder="(image URL)"
                 onChange={handleChange}
+                className='imageInput'
               />
             </label>
           </div>
-          <div>
-            <label htmlFor='comment'>
+          <div className='commentPost'>
+            <label htmlFor='comment' className='commentLabel'>
               caption
               <input
                 type="comment"
                 value={newForm.comment}
                 name="comment"
-                placeholder="comment"
+                placeholder="caption"
                 onChange={handleChange}
+                className='commentInput'
               />
             </label>
             <br />
-            <input type="Submit" value="Create Post" onChange={handleChange}
-            />
           </div>
+          <div className='submitButton'>
+            <input type="Submit" value="Create Post" onChange={handleChange}
+            className='createPost'
+            />
+            </div>
         </form>
       </section>
       <section className="user-list">
@@ -139,10 +134,12 @@ const Home = (props) => {
                 {/* <div key={{idx}} */}
                 <Link key={user._id} to={`/post/${user._id}`}>
                   <img src={user.image} className='homeImage' />
+                  <div className='captionDiv' >
                   <h3 className='caption'>{user.caption}</h3>
+                  </div>
                 </Link>
                 {/* all comment about the post should go here */}
-                <Comment />
+                <Comment postID = {user._id}/>
                 <Link key={user._id} to={`/post/${user._id}/edit`}>
                   <button className='EditButton'>Edit</button>
                   <h3 className='comment'>{comment.comment}</h3>

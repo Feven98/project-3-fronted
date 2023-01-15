@@ -73,7 +73,7 @@ return (
             <input type="submit" value="Confirm Edit" />
 
         </form>
-        <img src={form.image} />
+        <img className="editImageShow" src={form.image} />
         <DeleteImage />
     </>
 )

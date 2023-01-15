@@ -8,11 +8,11 @@ const Header = (props) => {
                 <Link to='/'>
                     <img className='logo' src="https://cdn-icons-png.flaticon.com/512/1/1394.png" />
                 </Link>
-                <Link to='/auth'>
+                {/* <Link to='/auth'>
                     <img className='profileHeader'
                         src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
                     />
-                </Link>
+                </Link> */}
             </nav>
         </header>
     )

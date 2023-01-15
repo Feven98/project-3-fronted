@@ -4,6 +4,7 @@ import { useContext } from "react"
 import RegisterForm from "../components/RegisterForm"
 import LoginForm from "../components/LoginForm"
 
+//STRETCH GOAL
 
 function Auth(props){
 

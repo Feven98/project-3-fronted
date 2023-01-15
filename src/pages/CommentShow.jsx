@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Comment from "./CommentPost";
 
 export default function ShowComment(){
-    const [user, setUser] = useState([])
     const [comment, setComment] = useState({
         comment: "",
     })

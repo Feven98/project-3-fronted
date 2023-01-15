@@ -6,7 +6,6 @@ import Auth from "../pages/Auth";
 // import Show from "../pages/Show";
 // import Edit from "../pages/Edit";
 import EditImage from "../pages/EditImage";
-import ProfilePage from "./allcomponent/Profile";
 import Showimage from "../pages/ShowImage";
 import Comment from "../pages/CommentPost";
 const Main = () => {
@@ -18,7 +17,6 @@ const Main = () => {
         {/* <Route path='/user' element={<User />} /> */}
         <Route path='/post/:id' element={<Showimage />} />
         <Route path='/post/:id/edit' element={<EditImage/>}/>
-        <Route path='/profile/:id' element={<ProfilePage/>}/>
         <Route path='/comment' element={<Comment />} />
       </Routes>
     </main>

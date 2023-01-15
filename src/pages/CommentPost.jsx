@@ -5,7 +5,7 @@ import ShowComment from './CommentShow'
 
 // const placeholderImage = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
 
-export default function Comment() {
+export default function Comment(props) {
     // define our state variable - []
     // react state
     // const token = getUserToken()
@@ -21,9 +21,9 @@ export default function Comment() {
     const getPerson = async () => {
         try {
             const response = await fetch(BASE_URL)
-            const foundPerson = await response.json()
+            const foundUser = await response.json()
             // setPerson(foundPerson)
-            setComment(foundPerson)
+            setComment(foundUser)
         } catch (err) {
             console.log(err)
         }
@@ -40,7 +40,7 @@ export default function Comment() {
 
         e.preventDefault()
 
-        const currentState = { ...comment }
+        const currentState = { ...comment, post: props.postID }
         console.log(currentState)
 
         try {
@@ -72,7 +72,7 @@ export default function Comment() {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='name'>
-                            Comment
+                            
                             <input
                                 type="text"
                                 id="comment"
@@ -80,12 +80,12 @@ export default function Comment() {
                                 placeholder="enter a comment"
                                 value={comment.comment}
                                 onChange={handleChange}
+                                className='commentPostInput'
                             />
                         </label>
                     </div>
-                    <input type="submit" value="Comment" />
+                    <input className='commentPostbutton' type="submit" value="Comment" />
         </form>
-        {/* <ShowComment /> */}
     </div>
 </div>
 )

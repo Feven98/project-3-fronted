@@ -72,27 +72,19 @@ console.log(stringifyID)
     console.log(allComments)
     // console.log(allComments[21].post)
     return ( 
-        <div className="previewContainer" style={{ border: '5px solid black' }}>
+        <div className="previewContainer" style={{ border: '2px solid black' }}>
             <img style={{ border: '5px solid black' }} className="previewImage" src={image.image} />
-            <div className="captionContainer" style={{ border: '5px solid black' }}>
+            <div className="captionContainer" >
                 <h3>{image.caption}</h3>
             </div>
             <div className="commentFilter">
                 {allComments.filter(comment => comment.post === stringifyID).map(filteredComment => (
 
-                    <div style={{ border: '1px solid black' }}>
+                    <div className='previewComment'>
                         {filteredComment.comment}
                     </div>
                 ))}
-                {/* {filteredComments.map(comments => (
-                    <div style={{ border: '1px solid black' }}>
-                        {comments}
-                    </div>
-                ))} */}
-                {/* {allComments.map(mapComment => (
-               { if (mapComment.post.id === {id})   }
-                <p>{comments.comment}</p>
-            ))} */}
+             
             </div>
         </div>
     )
