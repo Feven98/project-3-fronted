@@ -41,3 +41,9 @@ Backend : https://github.com/Feven98/Project-3-backend
 * Image uploaded
 * CSS Bootstrap
 
+## Bugs? Suggestions? 
+
+Email:
+
+Solomon : solomonsarr18@gmail.com
+Feven : rutemikey1@gmail.com
