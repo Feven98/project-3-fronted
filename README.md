@@ -1,6 +1,6 @@
 # Instagraph
 
-Instagraph is instagram like app. It is full-stack application with backend and frontend.Create a mock social media website that allows the posting of pictures as well as the tracking of picture comments on posted pictures.
+Instagraph is instagram like app. It is full-stack application with backend and frontend. It allows the posting of pictures, editing the post, deleting the post and comment on the post as well as the tracking of picture comments on posted pictures.
 
 
 ## Link to netlify deployement
