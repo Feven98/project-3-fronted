@@ -28,3 +28,9 @@ Backend : https://github.com/Feven98/Project-3-backend
 * Heroku
 * Netlify
 
+## Streach goal:
+
+* Authentication
+* Image uploaded
+* CSS Bootstrap
+
