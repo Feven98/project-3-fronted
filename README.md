@@ -15,6 +15,9 @@ Link: [https://fev-sol-project3.herokuapp.com/user]
 
 Backend : https://github.com/Feven98/Project-3-backend
 
+## Homepage
+
+<img width="1005" alt="Screenshot 2023-01-15 at 4 49 07 PM" src="https://user-images.githubusercontent.com/117063196/212569129-a7d6abae-afaf-4b7b-a5c9-b5b7dd856e10.png">
 
 ## Technology Used
 
