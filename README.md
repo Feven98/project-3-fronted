@@ -1,4 +1,4 @@
-# project-3-fronted
+# Project-3-fronted
 
 Instagraph is instagram like app. It is full-stack application with backend and frontend.
 
