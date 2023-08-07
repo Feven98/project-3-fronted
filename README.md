@@ -1,12 +1,12 @@
-# Project-3-fronted
+# Project-3-Fronted
 
 Instagraph is instagram like app. It is full-stack application with backend and frontend.
 
-## Link to netlify deployement
+## Link to Netlify deployement
 
 Link: [https://instagraphfs.netlify.app/]
 
-## Backend Deployed in heroku
+## Backend Deployed in Heroku
 
 Link: [https://fev-sol-project3.herokuapp.com/user]
 
