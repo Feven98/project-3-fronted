@@ -1,4 +1,4 @@
-# Project-3-Fronted
+# Project-3-Frontend
 
 Instagraph is instagram clone app. It is full-stack application with backend and frontend.
 
