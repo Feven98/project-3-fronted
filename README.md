@@ -1,6 +1,6 @@
 # Project-3-Frontend
 
-Instagraph is instagram clone app. It is full-stack application with backend and frontend.
+Instagraph is instagram clone app. It is a full-stack application with backend and frontend.
 
 ## Link to Netlify deployement
 
